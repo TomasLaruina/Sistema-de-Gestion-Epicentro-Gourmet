@@ -7,7 +7,7 @@ Sistema desarrollado en Java para la administración de festivales gastronómico
 - Nahuel Garcia
 - Emanuel Ezequiel Ledesma Rodriguez
 - Emiliano Luca Ledesma Rodriguez
-- Tomas Laurina
+- Tomas Laruina
 
 ## 📖 Descripción
 
