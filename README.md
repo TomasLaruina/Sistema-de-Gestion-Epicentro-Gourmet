@@ -46,23 +46,25 @@ src/
 │   └── Turno.java
 │
 └── test/
-    └── TestSistema.java
+    └── TestFestival.java
 ```
 
 ---
 
 ## 🧪 Testing
 
-El proyecto incluye una clase `TestSistema` donde se verifican:
+El proyecto incluye una clase `TestFestival` con 31 pasos donde se verifican:
 
-- Altas.
-- Bajas.
-- Búsquedas.
-- Reportes.
-- Validaciones.
-- Casos de error.
-- Rentabilidad.
-- Ranking de unidades.
+- Altas, bajas y búsquedas de staff, unidades y festivales.
+- Asignación de unidades a festivales y staff a unidades.
+- Pedidos con ítems (agregar, traer, eliminar).
+- Reportes de recaudación y ranking de unidades.
+- Cálculos de canon (FoodTruck y PuestoDesarmable).
+- Rentabilidad neta y entre fechas.
+- Plato estrella por festival.
+- Auditoría de personal.
+- Antigüedad, edad y haberes del personal (Cocinero y Cajero).
+- Validaciones de datos repetidos y errores.
 
 ---
 
