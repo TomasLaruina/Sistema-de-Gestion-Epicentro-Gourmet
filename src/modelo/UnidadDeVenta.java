@@ -78,6 +78,36 @@ public abstract class UnidadDeVenta {
 	public List<Pedido> getLstPedidos() {
 		return lstPedidos;
 	}
+	
+	
+	
+	public Plato traerPlatoEstrella(int idFestival) {
+		Plato estrella = null;
+		int maxCantidad = 0;
+		for(Plato p : lstPlatos) {
+			int cantidadTotal = 0;
+			for(Pedido pedido : lstPedidos) {
+				if(pedido.getFestival().getIdFestival() == idFestival) {
+					for(ItemPedido item : pedido.getListaItemPedido()) {
+						if(item.getPlato().equals(p)) {
+							cantidadTotal += item.getCantidad();
+						}
+					}
+				}
+			}
+
+			if(cantidadTotal > maxCantidad) {
+				maxCantidad = cantidadTotal;
+				estrella = p;
+			}
+		}
+
+		return estrella;
+	}
+	
+	
+	
+	
 
 	@Override
 	public String toString() {
