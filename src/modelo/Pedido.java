@@ -56,6 +56,43 @@ public class Pedido {
 	public List<ItemPedido> getListaItemPedido() {
 		return listaItemPedido;
 	}
+	
+	public boolean agregarItem(Plato p, int cantidad) {
+		if(cantidad <= 0) {
+			throw new IllegalArgumentException("Error: cantidad invalida");
+		}
+
+		int id = 1;
+
+		if(!listaItemPedido.isEmpty()) {
+			id = listaItemPedido.get(listaItemPedido.size()-1).getIdItem()+1;
+		}
+
+		return listaItemPedido.add(new ItemPedido(id, p, cantidad));
+	}
+	
+	public boolean eliminarItem(Plato p, int cantidad) {
+		ItemPedido encontrado = null;
+
+		int i = 0;
+
+		while(i < listaItemPedido.size() && encontrado == null) {
+
+			if(listaItemPedido.get(i).getPlato().equals(p)
+					&& listaItemPedido.get(i).getCantidad() == cantidad) {
+
+				encontrado = listaItemPedido.get(i);
+			}
+
+			i++;
+		}
+
+		if(encontrado == null) {
+			return false;
+		}
+
+		return listaItemPedido.remove(encontrado);
+	}
 
 	@Override
 	public String toString() {

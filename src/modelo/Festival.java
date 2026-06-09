@@ -74,6 +74,26 @@ public class Festival {
 	public List<UnidadDeVenta> getLstUnidadesDeVentas() {
 		return lstUnidadesDeVentas;
 	}
+	
+	public boolean agregarUnidadDeVenta(UnidadDeVenta unidad) {
+
+		if(traerUnidadDeVenta(unidad.getCodigoUnico()) != null) {
+			throw new IllegalArgumentException("Error: ya existe una unidad con ese codigo en el festival");
+		}
+
+		return lstUnidadesDeVentas.add(unidad);
+	}
+	
+	public boolean eliminarUnidadDeVenta(String codigoUnico) {
+		UnidadDeVenta encontrado = traerUnidadDeVenta(codigoUnico);
+
+		if(encontrado == null) {
+			return false;
+		}
+
+		return lstUnidadesDeVentas.remove(encontrado);
+	}
+
 
 	@Override
 	public String toString() {

@@ -29,6 +29,10 @@ public class Sistema {
 		return lstStaffs;
 	}
 	
+	
+	
+	
+	
 	public Festival traerFestival(int idFestival) {
 		Festival encontrado = null;
 		int i = 0;
@@ -41,7 +45,28 @@ public class Sistema {
 		return encontrado;
 	}
 	
+
 	
+
+	public boolean agregarFestival(String nombre, Temporada temporada, LocalDate fechaInicio,
+			LocalDate fechaFin, Costo costosLocales) {
+		int id = 1;
+		if(!lstFestivales.isEmpty()) {
+			id = lstFestivales.get(lstFestivales.size()-1).getIdFestival()+1;
+		}
+
+		return lstFestivales.add(new Festival(id, nombre, temporada, fechaInicio, fechaFin, costosLocales));
+	}
+	
+	public boolean eliminarFestival(int idFestival) {
+		Festival encontrado = traerFestival(idFestival);
+
+		if(encontrado == null) {
+			return false;
+		}
+
+		return lstFestivales.remove(encontrado);
+	}
 	
 	public boolean agregarFoodTruck(String nombreComercial, float superficie,String codigoUnico, Staff responsable,
 			String patente, boolean conexionElectrica) {
@@ -181,8 +206,50 @@ public class Sistema {
 		return listaFiltrada;
 	}
 	
+	public boolean registrarPedido(Pedido pedido) {
+	    Festival festival = traerFestival(pedido.getFestival().getIdFestival());
+	    UnidadDeVenta unidad = traerUnidad(pedido.getUnidadDeVenta().getCodigoUnico());
+
+	    if (festival == null) {
+	        throw new IllegalArgumentException("Error: el festival no existe");
+	    }
+	    if (unidad == null) {
+	        throw new IllegalArgumentException("Error: la unidad no existe");
+	    }
+
+	    return unidad.agregarPedido(pedido);
+	}
+
+	public List<ReporteVenta> reporteRecaudacion(int idFestival){
+		List<ReporteVenta> listaReporte = new ArrayList<ReporteVenta>();
+		Festival festival = traerFestival(idFestival);
+		if(festival != null) {
+			for(UnidadDeVenta u : festival.getLstUnidadesDeVentas()) {
+				listaReporte.add(new ReporteVenta(u,u.calcularRecaudacion()));
+			}
+		}
+		return listaReporte;
+	}
 	
+	public List<ReporteMayoresCanon> generarReporteMayoresCanon(int idFestival){
+		List<ReporteMayoresCanon> listaReporte =new ArrayList<ReporteMayoresCanon>();
+		Festival festival = traerFestival(idFestival);
+		if(festival != null) {
+			List<UnidadDeVenta> listaOrdenada =new ArrayList<UnidadDeVenta>(festival.getLstUnidadesDeVentas());
+			listaOrdenada.sort(Comparator.comparing((UnidadDeVenta u) -> u.calcularCanon(festival.getCostosLocales())).reversed());	
+			
+			for(int i=0; i<3 && i<listaOrdenada.size(); i++) {
+				UnidadDeVenta u = listaOrdenada.get(i);
+				listaReporte.add(new ReporteMayoresCanon(u.getIdUnidad(),u.getNombreComercial(),u.getClass().getSimpleName(),
+						u.calcularCanon(festival.getCostosLocales())));
+			}
+		}
+
+		return listaReporte;
+	}
 	
+
+
 	
 	@Override
 	public String toString() {

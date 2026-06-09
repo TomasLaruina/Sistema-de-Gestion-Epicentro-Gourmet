@@ -69,6 +69,10 @@ public abstract class Staff {
 	public void setFechaIngreso(LocalDate fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
+	
+	public int calcularEdad(LocalDate fechaNacimiento) {
+        return Period.between(fechaNacimiento, LocalDate.now()).getYears();
+    }
 
 	@Override
 	public String toString() {
