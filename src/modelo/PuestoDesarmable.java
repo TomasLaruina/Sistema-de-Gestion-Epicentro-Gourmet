@@ -4,8 +4,8 @@ public class PuestoDesarmable extends UnidadDeVenta {
 	private int cantidadCarpas;
 	private int tiempoMontaje;
 
-	public PuestoDesarmable(int idUnidad, String nombreComercial, float superficie,
-			String codigoUnico, Staff responsable,int cantidadCarpas, int tiempoMontaje) {
+	public PuestoDesarmable(int idUnidad, String nombreComercial, float superficie, String codigoUnico,
+			Staff responsable, int cantidadCarpas, int tiempoMontaje) {
 		super(idUnidad, nombreComercial, superficie, codigoUnico, responsable);
 		this.cantidadCarpas = cantidadCarpas;
 		this.tiempoMontaje = tiempoMontaje;
@@ -26,7 +26,7 @@ public class PuestoDesarmable extends UnidadDeVenta {
 	public void setTiempoMontaje(int tiempoMontaje) {
 		this.tiempoMontaje = tiempoMontaje;
 	}
-	
+
 	@Override
 	public float calcularCanon(Costo costo) {
 		float canon = 0;
@@ -37,10 +37,10 @@ public class PuestoDesarmable extends UnidadDeVenta {
 
 		return canon;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "PuestoDesarmable" + super.toString() + "[cantidadCarpas="
-				+ cantidadCarpas + ", tiempoMontaje=" + tiempoMontaje + "]";
+		return "PuestoDesarmable" + super.toString() + "[cantidadCarpas=" + cantidadCarpas + ", tiempoMontaje="
+				+ tiempoMontaje + "]";
 	}
 }

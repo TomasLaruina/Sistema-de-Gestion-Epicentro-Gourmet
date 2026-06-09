@@ -48,9 +48,8 @@ public class Plato {
 
 	@Override
 	public String toString() {
-		return "Plato [idPlato=" + idPlato + ", nombre=" + nombre
-				+ ", precioVenta=" + precioVenta + ", costoProduccion="
-				+ costoProduccion + "]";
+		return "Plato [idPlato=" + idPlato + ", nombre=" + nombre + ", precioVenta=" + precioVenta
+				+ ", costoProduccion=" + costoProduccion + "]";
 	}
 
 	@Override

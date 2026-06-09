@@ -6,13 +6,12 @@ public class Cocinero extends Staff {
 	private String especialidad;
 	private float plusCategoria;
 
-	public Cocinero(int idStaff, String nombre, String apellido, long dni,
-			LocalDate fechaNacimiento,LocalDate fechaIngreso, String especialidad, float plusCategoria) {
+	public Cocinero(int idStaff, String nombre, String apellido, long dni, LocalDate fechaNacimiento,
+			LocalDate fechaIngreso, String especialidad, float plusCategoria) {
 		super(idStaff, nombre, apellido, dni, fechaNacimiento, fechaIngreso);
 		this.especialidad = especialidad;
 		this.plusCategoria = plusCategoria;
 	}
-
 
 	public String getEspecialidad() {
 		return especialidad;
@@ -34,9 +33,10 @@ public class Cocinero extends Staff {
 	public float calcularHaberes(Costo costo) {
 		return costo.getSueldoBase() + plusCategoria;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Cocinero" + super.toString() + "[especialidad=" + especialidad + ", plusCategoria=" + plusCategoria + "]";
+		return "Cocinero" + super.toString() + "[especialidad=" + especialidad + ", plusCategoria=" + plusCategoria
+				+ "]";
 	}
 }

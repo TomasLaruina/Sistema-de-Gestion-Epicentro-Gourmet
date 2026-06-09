@@ -13,7 +13,8 @@ public class Festival {
 	private Costo costosLocales;
 	private List<UnidadDeVenta> lstUnidadesDeVentas;
 
-	public Festival(int idFestival, String nombre, Temporada temporada, LocalDate fechaInicio, LocalDate fechaFin, Costo costosLocales) {
+	public Festival(int idFestival, String nombre, Temporada temporada, LocalDate fechaInicio, LocalDate fechaFin,
+			Costo costosLocales) {
 		this.idFestival = idFestival;
 		this.nombre = nombre;
 		this.temporada = temporada;
@@ -74,34 +75,47 @@ public class Festival {
 	public List<UnidadDeVenta> getLstUnidadesDeVentas() {
 		return lstUnidadesDeVentas;
 	}
-	
+
+	public UnidadDeVenta traerUnidadDeVenta(String codigoUnico) {
+		UnidadDeVenta encontrado = null;
+		int i = 0;
+
+		while (i < lstUnidadesDeVentas.size() && encontrado == null) {
+			if (lstUnidadesDeVentas.get(i).getCodigoUnico().equalsIgnoreCase(codigoUnico)) {
+				encontrado = lstUnidadesDeVentas.get(i);
+			}
+			i++;
+		}
+
+		return encontrado;
+	}
+
 	public boolean agregarUnidadDeVenta(UnidadDeVenta unidad) {
 
-		if(traerUnidadDeVenta(unidad.getCodigoUnico()) != null) {
+		if (traerUnidadDeVenta(unidad.getCodigoUnico()) != null) {
 			throw new IllegalArgumentException("Error: ya existe una unidad con ese codigo en el festival");
 		}
 
 		return lstUnidadesDeVentas.add(unidad);
 	}
-	
+
 	public boolean eliminarUnidadDeVenta(String codigoUnico) {
 		UnidadDeVenta encontrado = traerUnidadDeVenta(codigoUnico);
 
-		if(encontrado == null) {
+		if (encontrado == null) {
 			return false;
 		}
 
 		return lstUnidadesDeVentas.remove(encontrado);
 	}
 
-
 	@Override
 	public String toString() {
 		return "Festival [idFestival=" + idFestival + ", nombre=" + nombre + ", temporada=" + temporada
-				+ ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", costosLocales="
-				+ costosLocales + ", unidadesDeVentas=" + lstUnidadesDeVentas + "]";
+				+ ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", costosLocales=" + costosLocales
+				+ ", unidadesDeVentas=" + lstUnidadesDeVentas + "]";
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -114,4 +128,3 @@ public class Festival {
 		return idFestival == other.idFestival;
 	}
 }
-

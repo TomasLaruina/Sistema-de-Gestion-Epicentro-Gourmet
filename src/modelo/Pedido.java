@@ -11,8 +11,7 @@ public class Pedido {
 	private UnidadDeVenta unidadDeVenta;
 	private List<ItemPedido> listaItemPedido;
 
-	public Pedido(int idPedido, LocalDate fecha, Festival festival,
-			UnidadDeVenta unidadDeVenta) {
+	public Pedido(int idPedido, LocalDate fecha, Festival festival, UnidadDeVenta unidadDeVenta) {
 		super();
 		this.idPedido = idPedido;
 		this.fecha = fecha;
@@ -56,30 +55,44 @@ public class Pedido {
 	public List<ItemPedido> getListaItemPedido() {
 		return listaItemPedido;
 	}
-	
+
 	public boolean agregarItem(Plato p, int cantidad) {
-		if(cantidad <= 0) {
+		if (cantidad <= 0) {
 			throw new IllegalArgumentException("Error: cantidad invalida");
 		}
 
 		int id = 1;
 
-		if(!listaItemPedido.isEmpty()) {
-			id = listaItemPedido.get(listaItemPedido.size()-1).getIdItem()+1;
+		if (!listaItemPedido.isEmpty()) {
+			id = listaItemPedido.get(listaItemPedido.size() - 1).getIdItem() + 1;
 		}
 
 		return listaItemPedido.add(new ItemPedido(id, p, cantidad));
 	}
-	
+
+	public ItemPedido traerItem(int idItem) {
+		ItemPedido encontrado = null;
+
+		int i = 0;
+
+		while (i < listaItemPedido.size() && encontrado == null) {
+			if (listaItemPedido.get(i).getIdItem() == idItem) {
+				encontrado = listaItemPedido.get(i);
+			}
+			i++;
+		}
+
+		return encontrado;
+	}
+
 	public boolean eliminarItem(Plato p, int cantidad) {
 		ItemPedido encontrado = null;
 
 		int i = 0;
 
-		while(i < listaItemPedido.size() && encontrado == null) {
+		while (i < listaItemPedido.size() && encontrado == null) {
 
-			if(listaItemPedido.get(i).getPlato().equals(p)
-					&& listaItemPedido.get(i).getCantidad() == cantidad) {
+			if (listaItemPedido.get(i).getPlato().equals(p) && listaItemPedido.get(i).getCantidad() == cantidad) {
 
 				encontrado = listaItemPedido.get(i);
 			}
@@ -87,21 +100,29 @@ public class Pedido {
 			i++;
 		}
 
-		if(encontrado == null) {
+		if (encontrado == null) {
 			return false;
 		}
 
 		return listaItemPedido.remove(encontrado);
 	}
 
+	public float calcularTotal() {
+		float total = 0;
+
+		for (ItemPedido i : listaItemPedido) {
+			total += i.calcularSubTotal();
+		}
+
+		return total;
+	}
+
 	@Override
 	public String toString() {
-		return "Pedido [idPedido=" + idPedido + ", fecha=" + fecha
-				+ ", festival=" + festival + ", unidadDeVenta="
+		return "Pedido [idPedido=" + idPedido + ", fecha=" + fecha + ", festival=" + festival + ", unidadDeVenta="
 				+ unidadDeVenta + "]";
 	}
-	
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

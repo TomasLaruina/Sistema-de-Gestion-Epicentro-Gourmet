@@ -14,8 +14,8 @@ public abstract class UnidadDeVenta {
 	protected List<Plato> lstPlatos;
 	protected List<Pedido> lstPedidos;
 
-	public UnidadDeVenta(int idUnidad, String nombreComercial, float superficie,
-			String codigoUnico, Staff responsable) {
+	public UnidadDeVenta(int idUnidad, String nombreComercial, float superficie, String codigoUnico,
+			Staff responsable) {
 		super();
 		this.idUnidad = idUnidad;
 		this.nombreComercial = nombreComercial;
@@ -78,31 +78,92 @@ public abstract class UnidadDeVenta {
 	public List<Pedido> getLstPedidos() {
 		return lstPedidos;
 	}
-	
+
+	public boolean agregarStaff(Staff staff) {
+		return lstStaffs.add(staff);
+	}
+
+	public boolean agregarPlato(Plato plato) {
+		return lstPlatos.add(plato);
+	}
+
+	public boolean agregarPedido(Pedido pedido) {
+		return lstPedidos.add(pedido);
+	}
+
+	public Pedido traerPedido(int idPedido) {
+		Pedido encontrado = null;
+
+		int i = 0;
+		while (i < lstPedidos.size() && encontrado == null) {
+			if (lstPedidos.get(i).getIdPedido() == idPedido) {
+				encontrado = lstPedidos.get(i);
+			}
+			i++;
+		}
+		return encontrado;
+	}
+
 	public float calcularRecaudacion() {
 		float total = 0;
-		for(Pedido p : lstPedidos) {
+		for (Pedido p : lstPedidos) {
 			total += p.calcularTotal();
 		}
 		return total;
 	}
-	
+
+	public float calcularRentabilidadNeta(Costo costo) {
+		float ganancias = calcularRecaudacion();
+		float costosPlatos = 0;
+		for (Pedido p : lstPedidos) {
+			for (ItemPedido i : p.getListaItemPedido()) {
+				costosPlatos += i.getPlato().getCostoProduccion() * i.getCantidad();
+			}
+		}
+
+		float sueldos = 0;
+		for (Staff s : lstStaffs) {
+			sueldos += s.calcularHaberes(costo);
+		}
+		return ganancias - costosPlatos - sueldos - calcularCanon(costo);
+	}
+
+	public float calcularRentabilidadNetaEntreFechas(LocalDate f1, LocalDate f2, Costo costo) {
+		float ganancias = 0;
+		float costosPlatos = 0;
+		for (Pedido p : lstPedidos) {
+
+			if ((!p.getFecha().isBefore(f1) && !p.getFecha().isAfter(f2))) {
+				ganancias += p.calcularTotal();
+				for (ItemPedido i : p.getListaItemPedido()) {
+					costosPlatos += i.getPlato().getCostoProduccion() * i.getCantidad();
+				}
+			}
+		}
+
+		float sueldos = 0;
+		for (Staff s : lstStaffs) {
+			sueldos += s.calcularHaberes(costo);
+		}
+		return ganancias - costosPlatos - sueldos - calcularCanon(costo);
+	}
+
 	public Plato traerPlatoEstrella(int idFestival) {
 		Plato estrella = null;
 		int maxCantidad = 0;
-		for(Plato p : lstPlatos) {
+		for (Plato p : lstPlatos) {
 			int cantidadTotal = 0;
-			for(Pedido pedido : lstPedidos) {
-				if(pedido.getFestival().getIdFestival() == idFestival) {
-					for(ItemPedido item : pedido.getListaItemPedido()) {
-						if(item.getPlato().equals(p)) {
+			for (Pedido pedido : lstPedidos) {
+				if (pedido.getFestival().getIdFestival() == idFestival) {
+					for (ItemPedido item : pedido.getListaItemPedido()) {
+						if (item.getPlato().equals(p)) {
 							cantidadTotal += item.getCantidad();
 						}
 					}
 				}
 			}
 
-			if(cantidadTotal > maxCantidad) {
+			if (cantidadTotal > maxCantidad) {
 				maxCantidad = cantidadTotal;
 				estrella = p;
 			}
@@ -110,20 +171,15 @@ public abstract class UnidadDeVenta {
 
 		return estrella;
 	}
-	
-	
-	
-	
 
 	@Override
 	public String toString() {
-		return " [idUnidad=" + idUnidad + ", nombreComercial=" + nombreComercial
-				+ ", superficie=" + superficie + ", codigoUnico=" + codigoUnico
-				+ ", responsable=" + responsable + "]";
+		return " [idUnidad=" + idUnidad + ", nombreComercial=" + nombreComercial + ", superficie=" + superficie
+				+ ", codigoUnico=" + codigoUnico + ", responsable=" + responsable + "]";
 	}
-	
+
 	public abstract float calcularCanon(Costo costo);
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

@@ -11,8 +11,8 @@ public abstract class Staff {
 	protected LocalDate fechaNacimiento;
 	protected LocalDate fechaIngreso;
 
-	public Staff(int idStaff, String nombre, String apellido, long dni,
-			LocalDate fechaNacimiento, LocalDate fechaIngreso) {
+	public Staff(int idStaff, String nombre, String apellido, long dni, LocalDate fechaNacimiento,
+			LocalDate fechaIngreso) {
 		super();
 		this.idStaff = idStaff;
 		this.nombre = nombre;
@@ -69,18 +69,17 @@ public abstract class Staff {
 	public void setFechaIngreso(LocalDate fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
-	
+
 	public int calcularEdad(LocalDate fechaNacimiento) {
-        return Period.between(fechaNacimiento, LocalDate.now()).getYears();
-    }
+		return Period.between(fechaNacimiento, LocalDate.now()).getYears();
+	}
 
 	@Override
 	public String toString() {
-		return " [idStaff=" + idStaff + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", dni=" + dni + ", fechaNacimiento=" + fechaNacimiento
-				+ ", fechaIngreso=" + fechaIngreso + "]";
+		return " [idStaff=" + idStaff + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
+				+ ", fechaNacimiento=" + fechaNacimiento + ", fechaIngreso=" + fechaIngreso + "]";
 	}
-	
+
 	public int calcularAntiguedad() {
 		return Period.between(fechaIngreso, LocalDate.now()).getYears();
 	}

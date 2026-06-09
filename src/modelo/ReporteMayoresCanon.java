@@ -5,7 +5,7 @@ public class ReporteMayoresCanon {
 	private String nombreComercial;
 	private String tipoUnidad;
 	private float canon;
-	
+
 	public ReporteMayoresCanon(int idUnidad, String nombreComercial, String tipoUnidad, float canon) {
 		super();
 		this.idUnidad = idUnidad;
@@ -63,5 +63,5 @@ public class ReporteMayoresCanon {
 		ReporteMayoresCanon other = (ReporteMayoresCanon) obj;
 		return idUnidad == other.idUnidad;
 	}
-	
+
 }

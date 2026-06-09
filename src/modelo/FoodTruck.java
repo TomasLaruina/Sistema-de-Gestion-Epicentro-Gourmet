@@ -4,7 +4,7 @@ public class FoodTruck extends UnidadDeVenta {
 	private String patente;
 	private boolean conexionElectrica;
 
-	public FoodTruck(int idUnidad, String nombreComercial, float superficie,String codigoUnico, Staff responsable,
+	public FoodTruck(int idUnidad, String nombreComercial, float superficie, String codigoUnico, Staff responsable,
 			String patente, boolean conexionElectrica) {
 		super(idUnidad, nombreComercial, superficie, codigoUnico, responsable);
 		this.patente = patente;
@@ -33,16 +33,16 @@ public class FoodTruck extends UnidadDeVenta {
 
 		canon = (superficie * costo.getCostoSuperficie());
 
-		if(conexionElectrica == true) {
+		if (conexionElectrica == true) {
 			canon += costo.getPlusElectricidad();
 		}
 
 		return canon;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "FoodTruck" + super.toString() + "[patente=" + patente
-				+ ", conexionElectrica=" + conexionElectrica + "]";
+		return "FoodTruck" + super.toString() + "[patente=" + patente + ", conexionElectrica=" + conexionElectrica
+				+ "]";
 	}
 }

@@ -28,7 +28,6 @@ public class ReporteVenta {
 
 	@Override
 	public String toString() {
-		return "ReporteVenta [unidadDeVenta=" + unidadDeVenta
-				+ ", recaudacionTotal=" + recaudacionTotal + "]";
+		return "ReporteVenta [unidadDeVenta=" + unidadDeVenta + ", recaudacionTotal=" + recaudacionTotal + "]";
 	}
 }

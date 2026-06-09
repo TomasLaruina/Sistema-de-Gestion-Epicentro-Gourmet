@@ -38,10 +38,13 @@ public class ItemPedido {
 
 	@Override
 	public String toString() {
-		return "ItemPedido [idItem=" + idItem + ", plato=" + plato
-				+ ", cantidad=" + cantidad + "]";
+		return "ItemPedido [idItem=" + idItem + ", plato=" + plato + ", cantidad=" + cantidad + "]";
 	}
-	
+
+	public float calcularSubTotal() {
+		return plato.getPrecioVenta() * cantidad;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

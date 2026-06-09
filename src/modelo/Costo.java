@@ -8,7 +8,8 @@ public class Costo {
 	private float plusPorAnioAntiguedad;
 	private float sueldoBase;
 
-	public Costo(int idCosto, float costoSuperficie, float costoMontaje, float plusElectricidad, float plusPorAnioAntiguedad, float sueldoBase) {
+	public Costo(int idCosto, float costoSuperficie, float costoMontaje, float plusElectricidad,
+			float plusPorAnioAntiguedad, float sueldoBase) {
 		this.idCosto = idCosto;
 		this.costoSuperficie = costoSuperficie;
 		this.costoMontaje = costoMontaje;
@@ -48,7 +49,7 @@ public class Costo {
 	public void setPlusElectricidad(float plusElectricidad) {
 		this.plusElectricidad = plusElectricidad;
 	}
-	
+
 	public float getPlusPorAnioAntiguedad() {
 		return plusPorAnioAntiguedad;
 	}
@@ -64,8 +65,6 @@ public class Costo {
 	public void setSueldoBase(float sueldoBase) {
 		this.sueldoBase = sueldoBase;
 	}
-
-	
 
 	@Override
 	public String toString() {
