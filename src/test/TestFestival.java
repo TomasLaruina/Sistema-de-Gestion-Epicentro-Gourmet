@@ -20,12 +20,14 @@ public class TestFestival {
 					"Parrilla", 25000);
 			sistema.agregarCocinero("Ana", "Lopez", 22222222, LocalDate.of(1995, 8, 15), LocalDate.of(2021, 6, 10),
 					"Pastas", 18000);
-			sistema.agregarCajero("Lucas", "Martinez", 33333333, LocalDate.of(1988, 4, 20), LocalDate.of(2018, 3, 1), Turno.MAÑANA);
-			sistema.agregarCajero("Sofia", "Gomez", 44444444, LocalDate.of(1992, 9, 12), LocalDate.of(2019, 7, 15), Turno.NOCHE);
+			sistema.agregarCajero("Lucas", "Martinez", 33333333, LocalDate.of(1988, 4, 20), LocalDate.of(2018, 3, 1),
+					Turno.MAÑANA);
+			sistema.agregarCajero("Sofia", "Gomez", 44444444, LocalDate.of(1992, 9, 12), LocalDate.of(2019, 7, 15),
+					Turno.NOCHE);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		for (Staff s : sistema.getStaff()) {
 			System.out.println(s);
 		}
@@ -59,8 +61,8 @@ public class TestFestival {
 		System.out.println("\n------ [ 4 ] AGREGAR FESTIVALES ------");
 
 		try {
-			sistema.agregarFestival("Festival Gourmet", Temporada.VERANO, LocalDate.of(2026, 1, 10), LocalDate.of(2026, 1, 20),
-					costo);
+			sistema.agregarFestival("Festival Gourmet", Temporada.VERANO, LocalDate.of(2026, 1, 10),
+					LocalDate.of(2026, 1, 20), costo);
 			sistema.agregarFestival("Festival Callejero", Temporada.INVIERNO, LocalDate.of(2026, 7, 5),
 					LocalDate.of(2026, 7, 12), costo);
 		} catch (Exception e) {
@@ -204,7 +206,8 @@ public class TestFestival {
 		System.out.println(ca2.calcularHaberes(costo));
 
 		System.out.println("\n------ [ 26 ] RENTABILIDAD ENTRE FECHAS ------");
-		System.out.println(u1.calcularRentabilidadNetaEntreFechas(LocalDate.of(2026, 1, 10), LocalDate.of(2026, 1, 15), costo));
+		System.out.println(
+				u1.calcularRentabilidadNetaEntreFechas(LocalDate.of(2026, 1, 10), LocalDate.of(2026, 1, 15), costo));
 
 		System.out.println("\n------ [ 27 ] MAYORES CANON ------");
 		for (ReporteMayoresCanon r : sistema.generarReporteMayoresCanon(1)) {
