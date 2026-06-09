@@ -1,6 +1,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public abstract class Staff {
 	protected int idStaff;
@@ -76,6 +77,11 @@ public abstract class Staff {
 				+ ", fechaIngreso=" + fechaIngreso + "]";
 	}
 	
+	public int calcularAntiguedad() {
+		return Period.between(fechaIngreso, LocalDate.now()).getYears();
+	}
+
+	public abstract float calcularHaberes(Costo costo);
 
 	@Override
 	public boolean equals(Object obj) {

@@ -28,6 +28,17 @@ public class PuestoDesarmable extends UnidadDeVenta {
 	}
 	
 	@Override
+	public float calcularCanon(Costo costo) {
+		float canon = 0;
+
+		canon = (superficie * costo.getCostoSuperficie());
+
+		canon -= (tiempoMontaje * costo.getCostoMontaje());
+
+		return canon;
+	}
+	
+	@Override
 	public String toString() {
 		return "PuestoDesarmable" + super.toString() + "[cantidadCarpas="
 				+ cantidadCarpas + ", tiempoMontaje=" + tiempoMontaje + "]";

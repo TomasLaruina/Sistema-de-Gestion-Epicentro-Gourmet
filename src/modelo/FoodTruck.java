@@ -28,6 +28,19 @@ public class FoodTruck extends UnidadDeVenta {
 	}
 
 	@Override
+	public float calcularCanon(Costo costo) {
+		float canon = 0;
+
+		canon = (superficie * costo.getCostoSuperficie());
+
+		if(conexionElectrica == true) {
+			canon += costo.getPlusElectricidad();
+		}
+
+		return canon;
+	}
+	
+	@Override
 	public String toString() {
 		return "FoodTruck" + super.toString() + "[patente=" + patente
 				+ ", conexionElectrica=" + conexionElectrica + "]";

@@ -29,6 +29,17 @@ public class Sistema {
 		return lstStaffs;
 	}
 	
+	public Festival traerFestival(int idFestival) {
+		Festival encontrado = null;
+		int i = 0;
+		while(i < lstFestivales.size() && encontrado == null) {
+			if(lstFestivales.get(i).getIdFestival() == idFestival) {
+				encontrado = lstFestivales.get(i);
+			}
+			i++;
+		}
+		return encontrado;
+	}
 	
 	
 	
@@ -148,6 +159,17 @@ public class Sistema {
 		return listaFiltrada;
 	}
 	
+	public UnidadDeVenta traerUnidad(String codigoUnico) {
+		UnidadDeVenta encontrado = null;
+		int i = 0;
+		while(i < lstUnidades.size() && encontrado == null) {
+			if(lstUnidades.get(i).getCodigoUnico().equalsIgnoreCase(codigoUnico)) {
+				encontrado = lstUnidades.get(i);
+			}
+			i++;
+		}
+		return encontrado;
+	}
 	
 	public List<Staff> traerPersonalNacidoEntreFechas(LocalDate f1, LocalDate f2){
 		List<Staff> listaFiltrada = new ArrayList<Staff>();

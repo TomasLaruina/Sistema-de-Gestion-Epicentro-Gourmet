@@ -18,6 +18,11 @@ public class Cajero extends Staff {
 	public void setTurno(Turno turno) {
 		this.turno = turno;
 	}
+	
+	@Override
+	public float calcularHaberes(Costo costo) {
+		return costo.getSueldoBase() + (calcularAntiguedad() * costo.getPlusPorAnioAntiguedad());
+	}
 
 	@Override
 	public String toString() {

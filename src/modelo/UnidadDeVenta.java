@@ -79,7 +79,13 @@ public abstract class UnidadDeVenta {
 		return lstPedidos;
 	}
 	
-	
+	public float calcularRecaudacion() {
+		float total = 0;
+		for(Pedido p : lstPedidos) {
+			total += p.calcularTotal();
+		}
+		return total;
+	}
 	
 	public Plato traerPlatoEstrella(int idFestival) {
 		Plato estrella = null;
@@ -115,6 +121,8 @@ public abstract class UnidadDeVenta {
 				+ ", superficie=" + superficie + ", codigoUnico=" + codigoUnico
 				+ ", responsable=" + responsable + "]";
 	}
+	
+	public abstract float calcularCanon(Costo costo);
 	
 	@Override
 	public boolean equals(Object obj) {

@@ -31,6 +31,11 @@ public class Cocinero extends Staff {
 	}
 
 	@Override
+	public float calcularHaberes(Costo costo) {
+		return costo.getSueldoBase() + plusCategoria;
+	}
+	
+	@Override
 	public String toString() {
 		return "Cocinero" + super.toString() + "[especialidad=" + especialidad + ", plusCategoria=" + plusCategoria + "]";
 	}
