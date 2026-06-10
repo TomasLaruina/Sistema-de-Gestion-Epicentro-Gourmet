@@ -19,6 +19,7 @@ public class Cajero extends Staff {
 		this.turno = turno;
 	}
 
+	//Tomas Laruina
 	@Override
 	public float calcularHaberes(Costo costo) {
 		return costo.getSueldoBase() + (calcularAntiguedad() * costo.getPlusPorAnioAntiguedad());

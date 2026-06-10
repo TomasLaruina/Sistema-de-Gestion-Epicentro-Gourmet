@@ -76,6 +76,7 @@ public class Festival {
 		return lstUnidadesDeVentas;
 	}
 
+	//Emiliano Luca Ledesma Rodriguez
 	public UnidadDeVenta traerUnidadDeVenta(String codigoUnico) {
 		UnidadDeVenta encontrado = null;
 		int i = 0;
@@ -90,6 +91,7 @@ public class Festival {
 		return encontrado;
 	}
 
+	//Emanuel Ezequiel Ledesma Rodriguez
 	public boolean agregarUnidadDeVenta(UnidadDeVenta unidad) {
 
 		if (traerUnidadDeVenta(unidad.getCodigoUnico()) != null) {
@@ -99,6 +101,7 @@ public class Festival {
 		return lstUnidadesDeVentas.add(unidad);
 	}
 
+	//Emanuel Ezequiel Ledesma Rodriguez
 	public boolean eliminarUnidadDeVenta(String codigoUnico) {
 		UnidadDeVenta encontrado = traerUnidadDeVenta(codigoUnico);
 

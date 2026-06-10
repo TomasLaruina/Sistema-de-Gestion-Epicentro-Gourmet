@@ -27,6 +27,7 @@ public class PuestoDesarmable extends UnidadDeVenta {
 		this.tiempoMontaje = tiempoMontaje;
 	}
 
+	//Tomas Laruina
 	@Override
 	public float calcularCanon(Costo costo) {
 		float canon = 0;

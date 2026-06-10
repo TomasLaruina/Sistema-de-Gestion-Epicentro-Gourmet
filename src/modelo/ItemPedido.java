@@ -41,6 +41,7 @@ public class ItemPedido {
 		return "ItemPedido [idItem=" + idItem + ", plato=" + plato + ", cantidad=" + cantidad + "]";
 	}
 
+	//Emiliano Luca Ledesma Rodriguez
 	public float calcularSubTotal() {
 		return plato.getPrecioVenta() * cantidad;
 	}

@@ -79,18 +79,22 @@ public abstract class UnidadDeVenta {
 		return lstPedidos;
 	}
 
+	//Emiliano Luca Ledesma Rodriguez
 	public boolean agregarStaff(Staff staff) {
 		return lstStaffs.add(staff);
 	}
 
+	//Emiliano Luca Ledesma Rodriguez
 	public boolean agregarPlato(Plato plato) {
 		return lstPlatos.add(plato);
 	}
 
+	//Emiliano Luca Ledesma Rodriguez
 	public boolean agregarPedido(Pedido pedido) {
 		return lstPedidos.add(pedido);
 	}
 
+	//Emiliano Luca Ledesma Rodriguez
 	public Pedido traerPedido(int idPedido) {
 		Pedido encontrado = null;
 
@@ -104,6 +108,7 @@ public abstract class UnidadDeVenta {
 		return encontrado;
 	}
 
+	//Tomas Laruina
 	public float calcularRecaudacion() {
 		float total = 0;
 		for (Pedido p : lstPedidos) {
@@ -112,6 +117,7 @@ public abstract class UnidadDeVenta {
 		return total;
 	}
 
+	//Emiliano Luca Ledesma Rodriguez
 	public float calcularRentabilidadNeta(Costo costo) {
 		float ganancias = calcularRecaudacion();
 		float costosPlatos = 0;
@@ -128,6 +134,7 @@ public abstract class UnidadDeVenta {
 		return ganancias - costosPlatos - sueldos - calcularCanon(costo);
 	}
 
+	//Emiliano Luca Ledesma Rodriguez
 	public float calcularRentabilidadNetaEntreFechas(LocalDate f1, LocalDate f2, Costo costo) {
 		float ganancias = 0;
 		float costosPlatos = 0;
@@ -148,6 +155,7 @@ public abstract class UnidadDeVenta {
 		return ganancias - costosPlatos - sueldos - calcularCanon(costo);
 	}
 
+	//Nahuel Nicolas Garcia
 	public Plato traerPlatoEstrella(int idFestival) {
 		Plato estrella = null;
 		int maxCantidad = 0;
@@ -178,6 +186,7 @@ public abstract class UnidadDeVenta {
 				+ ", codigoUnico=" + codigoUnico + ", responsable=" + responsable + "]";
 	}
 
+	//Tomas Laruina
 	public abstract float calcularCanon(Costo costo);
 
 	@Override

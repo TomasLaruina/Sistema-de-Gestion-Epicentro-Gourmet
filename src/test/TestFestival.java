@@ -145,9 +145,10 @@ public class TestFestival {
 
 		System.out.println("\n------ [ 11 ] ELIMINAR ITEM DE PEDIDO ------");
 		pe3.eliminarItem(p3, 10);
-		for (ItemPedido item : pe3.getListaItemPedido()) {
+		for(ItemPedido item : pe3.getListaItemPedido()) {
 			System.out.println(item);
 		}
+		
 		pe3.agregarItem(p3, 10);
 
 		System.out.println("\n------ [ 12 ] TRAER PEDIDO DE UNIDAD ------");
@@ -157,10 +158,11 @@ public class TestFestival {
 
 		System.out.println("\n------ [ 13 ] TRAER STAFF ------");
 		System.out.println(sistema.traerStaff(11111111));
+		
 		System.out.println("\n------ [ 14 ] TRAER UNIDAD ------");
 		System.out.println(sistema.traerUnidad("FT12345678"));
+		
 		System.out.println("\n------ [ 15 ] REPORTE RECAUDACION ------");
-
 		for (ReporteVenta r : sistema.reporteRecaudacion(1)) {
 			System.out.println(r);
 		}
@@ -172,6 +174,7 @@ public class TestFestival {
 
 		System.out.println("\n------ [ 17 ] PLATO ESTRELLA ------");
 		System.out.println(u1.traerPlatoEstrella(1));
+		
 		System.out.println("\n------ [ 18 ] AUDITORIA PERSONAL ------");
 
 		for (Staff s : sistema.traerAuditoriaPersonal(1)) {
@@ -188,25 +191,25 @@ public class TestFestival {
 		System.out.println(u3.calcularCanon(costo));
 
 		System.out.println("\n------ [ 21 ] RENTABILIDAD NETA ------");
-		System.out.println(u1.calcularRentabilidadNeta(costo));
+		System.out.println(u1.getNombreComercial() + ": " + u1.calcularRentabilidadNeta(costo));
 
 		System.out.println("\n------ [ 22 ] CALCULAR ANTIGÜEDAD ------");
-		System.out.println(ca1.calcularAntiguedad());
-		System.out.println(ca2.calcularAntiguedad());
+		System.out.println("Antigueda de "+ ca1.getNombre() + ": " + ca1.calcularAntiguedad());
+		System.out.println("Antigueda de "+ ca2.getNombre() + ": " + ca2.calcularAntiguedad());
 
 		System.out.println("\n------ [ 23 ] CALCULAR EDAD ------");
-		System.out.println(c1.calcularEdad(c1.getFechaNacimiento()));
-		System.out.println(ca1.calcularEdad(ca1.getFechaNacimiento()));
+		System.out.println("Edad de " + c1.getNombre() + ": "+ c1.calcularEdad(c1.getFechaNacimiento()));
+		System.out.println("Edad de " + ca1.getNombre() + ": "+ ca1.calcularEdad(ca1.getFechaNacimiento()));
 
 		System.out.println("\n------ [ 24 ] CALCULAR HABERES COCINERO ------");
-		System.out.println(c1.calcularHaberes(costo));
+		System.out.println("Nombre: " + c1.getNombre() + " - Haberes :" + c1.calcularHaberes(costo));
 
 		System.out.println("\n------ [ 25 ] CALCULAR HABERES CAJERO ------");
-		System.out.println(ca1.calcularHaberes(costo));
-		System.out.println(ca2.calcularHaberes(costo));
+		System.out.println("Nombre: " + ca1.getNombre() + " - Haberes :" +ca1.calcularHaberes(costo));
+		System.out.println("Nombre: " + ca2.getNombre() + " - Haberes :" +ca2.calcularHaberes(costo));
 
 		System.out.println("\n------ [ 26 ] RENTABILIDAD ENTRE FECHAS ------");
-		System.out.println(
+		System.out.println(u1.getNombreComercial() +": " + 
 				u1.calcularRentabilidadNetaEntreFechas(LocalDate.of(2026, 1, 10), LocalDate.of(2026, 1, 15), costo));
 
 		System.out.println("\n------ [ 27 ] MAYORES CANON ------");
@@ -240,7 +243,14 @@ public class TestFestival {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-
+		
+		System.out.println("\n------ [ 32 ] VALIDACION DE EDAD STAFF ------");
+		try {
+			sistema.agregarCajero("Felipe", "Ruiz", 88888888, LocalDate.of(2009, 4, 20), LocalDate.of(2018, 3, 1),
+					Turno.MAÑANA);
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 }

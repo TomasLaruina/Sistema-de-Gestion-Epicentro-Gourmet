@@ -56,6 +56,7 @@ public class Pedido {
 		return listaItemPedido;
 	}
 
+	//Emanuel Ezequiel Ledesma Rodriguez
 	public boolean agregarItem(Plato p, int cantidad) {
 		if (cantidad <= 0) {
 			throw new IllegalArgumentException("Error: cantidad invalida");
@@ -70,6 +71,7 @@ public class Pedido {
 		return listaItemPedido.add(new ItemPedido(id, p, cantidad));
 	}
 
+	//Emiliano Luca Ledesma Rodriguez
 	public ItemPedido traerItem(int idItem) {
 		ItemPedido encontrado = null;
 
@@ -85,6 +87,7 @@ public class Pedido {
 		return encontrado;
 	}
 
+	//Emanuel Ezequiel Ledesma Rodriguez
 	public boolean eliminarItem(Plato p, int cantidad) {
 		ItemPedido encontrado = null;
 
@@ -107,6 +110,7 @@ public class Pedido {
 		return listaItemPedido.remove(encontrado);
 	}
 
+	//Emiliano Luca Ledesma Rodriguez
 	public float calcularTotal() {
 		float total = 0;
 

@@ -28,7 +28,8 @@ public class Cocinero extends Staff {
 	public void setPlusCategoria(float plusCategoria) {
 		this.plusCategoria = plusCategoria;
 	}
-
+	
+	//Tomas Laruina
 	@Override
 	public float calcularHaberes(Costo costo) {
 		return costo.getSueldoBase() + plusCategoria;

@@ -18,7 +18,7 @@ public abstract class Staff {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
-		this.fechaNacimiento = fechaNacimiento;
+		this.setFechaNacimiento(fechaNacimiento);
 		this.fechaIngreso = fechaIngreso;
 	}
 
@@ -59,6 +59,10 @@ public abstract class Staff {
 	}
 
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
+		
+		if(calcularEdad(fechaNacimiento) < 18) {
+			throw new IllegalArgumentException("Error: El Staff debe ser mayor de edad");
+		}
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
@@ -70,6 +74,7 @@ public abstract class Staff {
 		this.fechaIngreso = fechaIngreso;
 	}
 
+	//Emanuel Ezequiel Ledesma Rodriguez
 	public int calcularEdad(LocalDate fechaNacimiento) {
 		return Period.between(fechaNacimiento, LocalDate.now()).getYears();
 	}
@@ -80,10 +85,12 @@ public abstract class Staff {
 				+ ", fechaNacimiento=" + fechaNacimiento + ", fechaIngreso=" + fechaIngreso + "]";
 	}
 
+	//Tomas Laruina
 	public int calcularAntiguedad() {
 		return Period.between(fechaIngreso, LocalDate.now()).getYears();
 	}
 
+	//Tomas Laruina
 	public abstract float calcularHaberes(Costo costo);
 
 	@Override
