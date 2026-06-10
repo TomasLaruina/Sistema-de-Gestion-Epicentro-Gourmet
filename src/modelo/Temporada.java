@@ -1,5 +1,5 @@
 package modelo;
 
 public enum Temporada {
-	VERANO, OTOÑO, INVIERNO, PRIMAVERA
+	VERANO, OTONO, INVIERNO, PRIMAVERA
 }

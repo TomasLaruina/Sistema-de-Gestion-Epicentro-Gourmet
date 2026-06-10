@@ -21,7 +21,7 @@ public class TestFestival {
 			sistema.agregarCocinero("Ana", "Lopez", 22222222, LocalDate.of(1995, 8, 15), LocalDate.of(2021, 6, 10),
 					"Pastas", 18000);
 			sistema.agregarCajero("Lucas", "Martinez", 33333333, LocalDate.of(1988, 4, 20), LocalDate.of(2018, 3, 1),
-					Turno.MAÑANA);
+					Turno.MANANA);
 			sistema.agregarCajero("Sofia", "Gomez", 44444444, LocalDate.of(1992, 9, 12), LocalDate.of(2019, 7, 15),
 					Turno.NOCHE);
 		} catch (Exception e) {
@@ -247,7 +247,7 @@ public class TestFestival {
 		System.out.println("\n------ [ 32 ] VALIDACION DE EDAD STAFF ------");
 		try {
 			sistema.agregarCajero("Felipe", "Ruiz", 88888888, LocalDate.of(2009, 4, 20), LocalDate.of(2018, 3, 1),
-					Turno.MAÑANA);
+					Turno.MANANA);
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
